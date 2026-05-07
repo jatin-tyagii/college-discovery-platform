@@ -9,6 +9,8 @@ async function main() {
   const colleges = [
     {
       name: "IIT Bombay",
+      slug: "iit-bombay",
+      city: "Mumbai",
       location: "Mumbai",
       state: "Maharashtra",
       fees: 220000,
@@ -23,6 +25,8 @@ async function main() {
     },
     {
       name: "IIT Delhi",
+      slug: "iit-delhi",
+      city: "New Delhi",
       location: "New Delhi",
       state: "Delhi",
       fees: 215000,
@@ -37,6 +41,8 @@ async function main() {
     },
     {
       name: "IIT Madras",
+      slug: "iit-madras",
+      city: "Chennai",
       location: "Chennai",
       state: "Tamil Nadu",
       fees: 210000,
@@ -51,6 +57,8 @@ async function main() {
     },
     {
       name: "IIT Kanpur",
+      slug: "iit-kanpur",
+      city: "Kanpur",
       location: "Kanpur",
       state: "UP",
       fees: 205000,
@@ -65,6 +73,8 @@ async function main() {
     },
     {
       name: "IIT Kharagpur",
+      slug: "iit-kharagpur",
+      city: "Kharagpur",
       location: "Kharagpur",
       state: "West Bengal",
       fees: 200000,
@@ -79,6 +89,8 @@ async function main() {
     },
     {
       name: "NIT Trichy",
+      slug: "nit-trichy",
+      city: "Tiruchirappalli",
       location: "Tiruchirappalli",
       state: "Tamil Nadu",
       fees: 150000,
@@ -93,6 +105,8 @@ async function main() {
     },
     {
       name: "NIT Surathkal",
+      slug: "nit-surathkal",
+      city: "Mangalore",
       location: "Mangalore",
       state: "Karnataka",
       fees: 145000,
@@ -107,6 +121,8 @@ async function main() {
     },
     {
       name: "NIT Warangal",
+      slug: "nit-warangal",
+      city: "Warangal",
       location: "Warangal",
       state: "Telangana",
       fees: 142000,
@@ -121,6 +137,8 @@ async function main() {
     },
     {
       name: "BITS Pilani",
+      slug: "bits-pilani",
+      city: "Pilani",
       location: "Pilani",
       state: "Rajasthan",
       fees: 520000,
@@ -135,6 +153,8 @@ async function main() {
     },
     {
       name: "VIT Vellore",
+      slug: "vit-vellore",
+      city: "Vellore",
       location: "Vellore",
       state: "Tamil Nadu",
       fees: 370000,
@@ -149,6 +169,8 @@ async function main() {
     },
     {
       name: "Manipal Institute of Technology",
+      slug: "manipal-institute-of-technology",
+      city: "Manipal",
       location: "Manipal",
       state: "Karnataka",
       fees: 430000,
@@ -163,6 +185,8 @@ async function main() {
     },
     {
       name: "SRM Institute of Science and Technology",
+      slug: "srm-institute-of-science-and-technology",
+      city: "Chennai",
       location: "Kattankulathur",
       state: "Tamil Nadu",
       fees: 350000,
@@ -177,6 +201,8 @@ async function main() {
     },
     {
       name: "Delhi Technological University",
+      slug: "delhi-technological-university",
+      city: "New Delhi",
       location: "New Delhi",
       state: "Delhi",
       fees: 160000,
@@ -191,6 +217,8 @@ async function main() {
     },
     {
       name: "Netaji Subhas University of Technology",
+      slug: "netaji-subhas-university-of-technology",
+      city: "New Delhi",
       location: "New Delhi",
       state: "Delhi",
       fees: 155000,
@@ -205,6 +233,8 @@ async function main() {
     },
     {
       name: "IIM Ahmedabad",
+      slug: "iim-ahmedabad",
+      city: "Ahmedabad",
       location: "Ahmedabad",
       state: "Gujarat",
       fees: 2400000,
@@ -219,6 +249,8 @@ async function main() {
     },
     {
       name: "IIM Bangalore",
+      slug: "iim-bangalore",
+      city: "Bangalore",
       location: "Bengaluru",
       state: "Karnataka",
       fees: 2300000,
@@ -233,6 +265,8 @@ async function main() {
     },
     {
       name: "IIM Calcutta",
+      slug: "iim-calcutta",
+      city: "Kolkata",
       location: "Kolkata",
       state: "West Bengal",
       fees: 2250000,
@@ -247,6 +281,8 @@ async function main() {
     },
     {
       name: "Amity University",
+      slug: "amity-university",
+      city: "Noida",
       location: "Noida",
       state: "UP",
       fees: 280000,
@@ -261,6 +297,8 @@ async function main() {
     },
     {
       name: "Symbiosis Institute of Technology",
+      slug: "symbiosis-institute-of-technology",
+      city: "Pune",
       location: "Pune",
       state: "Maharashtra",
       fees: 400000,
@@ -275,6 +313,8 @@ async function main() {
     },
     {
       name: "Christ University",
+      slug: "christ-university",
+      city: "Bangalore",
       location: "Bengaluru",
       state: "Karnataka",
       fees: 200000,
@@ -289,6 +329,8 @@ async function main() {
     },
     {
       name: "PSG College of Technology",
+      slug: "psg-college-of-technology",
+      city: "Coimbatore",
       location: "Coimbatore",
       state: "Tamil Nadu",
       fees: 120000,
@@ -303,6 +345,8 @@ async function main() {
     },
     {
       name: "Thapar Institute of Engineering and Technology",
+      slug: "thapar-institute-of-engineering-and-technology",
+      city: "Patiala",
       location: "Patiala",
       state: "Punjab",
       fees: 450000,
@@ -317,6 +361,8 @@ async function main() {
     },
     {
       name: "Jadavpur University",
+      slug: "jadavpur-university",
+      city: "Kolkata",
       location: "Kolkata",
       state: "West Bengal",
       fees: 50000,
@@ -331,6 +377,8 @@ async function main() {
     },
     {
       name: "Coimbatore Institute of Technology",
+      slug: "coimbatore-institute-of-technology",
+      city: "Coimbatore",
       location: "Coimbatore",
       state: "Tamil Nadu",
       fees: 95000,
@@ -345,6 +393,8 @@ async function main() {
     },
     {
       name: "Birla Institute of Technology Mesra",
+      slug: "birla-institute-of-technology-mesra",
+      city: "Ranchi",
       location: "Ranchi",
       state: "Jharkhand",
       fees: 300000,
