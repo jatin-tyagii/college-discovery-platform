@@ -1,0 +1,154 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String
+  email         String         @unique
+  password      String
+  avatar        String?
+  savedColleges SavedCollege[]
+  reviews       Review[]
+  questions     Question[]
+  answers       Answer[]
+  createdAt     DateTime       @default(now())
+}
+
+model College {
+  id              String        @id @default(cuid())
+  name            String
+  slug            String        @unique
+  location        String
+  city            String
+  state           String
+  country         String        @default("India")
+  type            String
+  fees            Int
+  feesMax         Int?
+  rating          Float
+  reviewCount     Int           @default(0)
+  placementPct    Int
+  avgPackage      Int?
+  highestPackage  Int?
+  coursesOffered  String[]
+  description     String
+  about           String?
+  imageUrl        String?
+  websiteUrl      String?
+  established     Int?
+  ranking         Int?
+  nirf            Int?
+  naac            String?
+  cutoffRank      Int?
+  examName        String?
+  totalStudents   Int?
+  totalFaculty    Int?
+  campusArea      Int?
+  hostelAvailable Boolean       @default(false)
+  saved           SavedCollege[]
+  reviews         Review[]
+  exams           CollegeExam[]
+  courses         Course[]
+  createdAt       DateTime      @default(now())
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String
+  duration    Int
+  fees        Int
+  description String?
+  seats       Int?
+  collegeId   String
+  college     College  @relation(fields: [collegeId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Exam {
+  id             String        @id @default(cuid())
+  name           String
+  slug           String        @unique
+  fullName       String
+  type           String
+  level          String
+  conductedBy    String
+  frequency      String
+  description    String
+  eligibility    String
+  syllabus       String?
+  importantDates Json?
+  colleges       CollegeExam[]
+  createdAt      DateTime      @default(now())
+}
+
+model CollegeExam {
+  id        String  @id @default(cuid())
+  collegeId String
+  examId    String
+  cutoff    Int?
+  college   College @relation(fields: [collegeId], references: [id])
+  exam      Exam    @relation(fields: [examId], references: [id])
+  @@unique([collegeId, examId])
+}
+
+model SavedCollege {
+  id        String   @id @default(cuid())
+  userId    String
+  collegeId String
+  user      User     @relation(fields: [userId], references: [id])
+  college   College  @relation(fields: [collegeId], references: [id])
+  createdAt DateTime @default(now())
+  @@unique([userId, collegeId])
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  rating       Float
+  title        String
+  content      String
+  pros         String?
+  cons         String?
+  batch        Int?
+  course       String?
+  verified     Boolean  @default(false)
+  helpfulCount Int      @default(0)
+  userId       String
+  collegeId    String
+  user         User     @relation(fields: [userId], references: [id])
+  college      College  @relation(fields: [collegeId], references: [id])
+  createdAt    DateTime @default(now())
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  tags        String[]
+  views       Int      @default(0)
+  answerCount Int      @default(0)
+  solved      Boolean  @default(false)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  answers     Answer[]
+  createdAt   DateTime @default(now())
+}
+
+model Answer {
+  id           String   @id @default(cuid())
+  content      String
+  isAccepted   Boolean  @default(false)
+  helpfulCount Int      @default(0)
+  userId       String
+  questionId   String
+  user         User     @relation(fields: [userId], references: [id])
+  question     Question @relation(fields: [questionId], references: [id])
+  createdAt    DateTime @default(now())
+}
