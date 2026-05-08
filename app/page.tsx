@@ -226,7 +226,7 @@ export default async function HomePage() {
               { icon: MessageSquare, label: "Student Q&A", sub: "Ask real students", href: "/qa" },
             ].map(({ icon: Icon, label, sub, href }) => (
               <Link key={href} href={href}
-                className="p-6 flex items-start gap-4 group hover:text-white transition-colors"
+                className="p-6 flex items-start gap-4 group hover:bg-zinc-100 transition-colors"
                 style={{ borderRight: "2px solid var(--ink)" }}>
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0"
                   style={{ background: "var(--accent)" }}>
@@ -262,7 +262,7 @@ export default async function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: "var(--ink)" }}>
           {colleges.map((college, i) => (
             <Link key={college.id} href={`/colleges/${college.id}`}
-              className="block p-6 group hover:bg-zinc-900 transition-colors"
+              className="block p-6 group hover:bg-zinc-100 transition-colors"
               style={{ background: i % 2 === 0 ? "var(--white)" : "var(--cream)" }}>
               <div className="flex justify-between items-start mb-4">
                 <span className={`badge ${college.type === "Government" ? "badge-govt" : "badge-private"}`}>{college.type}</span>
