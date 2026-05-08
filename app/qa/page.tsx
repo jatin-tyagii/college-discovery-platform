@@ -207,7 +207,7 @@ export default function QAPage() {
           <div className="space-y-3">
             {questions.map((q: any) => (
               <Link key={q.id} href={`/qa/${q.id}`}
-                className="editorial-card p-5 flex gap-4 group hover:bg-zinc-900 transition-colors block">
+                className="editorial-card p-5 flex gap-4 group hover:bg-zinc-100 transition-colors block">
                 {/* Stats column */}
                 <div className="flex flex-col items-center gap-3 flex-shrink-0 w-14 text-center pt-1">
                   <div>
