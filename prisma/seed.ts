@@ -747,3 +747,30 @@ for (const college of newColleges) {
   await (prisma.college as any).create({ data: college });
 }
 console.log("Seeded 20 more colleges successfully.");
+
+// Bennett University
+await (prisma.college as any).create({
+  data: {
+    name: "Bennett University",
+    slug: "bennett-university",
+    city: "Greater Noida",
+    location: "Greater Noida",
+    state: "Uttar Pradesh",
+    country: "India",
+    type: "Private",
+    fees: 350000,
+    rating: 4.1,
+    placementPct: 82,
+    coursesOffered: ["B.Tech", "MBA", "BCA", "MCA", "B.Sc"],
+    description: "Bennett University is a Times Group institution offering world-class education with strong industry connections and modern campus facilities in Greater Noida.",
+    imageUrl: "https://picsum.photos/seed/bennett/400/200",
+    cutoffRank: 50000,
+    examName: "JEE",
+    reviewCount: 0,
+    hostelAvailable: true,
+    established: 2016,
+    naac: "A",
+    websiteUrl: "https://www.bennett.edu.in",
+  }
+});
+console.log("Added Bennett University successfully.");

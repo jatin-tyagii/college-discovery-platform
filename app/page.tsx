@@ -226,7 +226,7 @@ export default async function HomePage() {
               { icon: MessageSquare, label: "Student Q&A", sub: "Ask real students", href: "/qa" },
             ].map(({ icon: Icon, label, sub, href }) => (
               <Link key={href} href={href}
-                className="p-6 flex items-start gap-4 group hover:bg-zinc-900 transition-colors"
+                className="p-6 flex items-start gap-4 group hover:text-white transition-colors"
                 style={{ borderRight: "2px solid var(--ink)" }}>
                 <div className="w-10 h-10 flex items-center justify-center flex-shrink-0"
                   style={{ background: "var(--accent)" }}>
