@@ -4,10 +4,10 @@ import { handleApiError } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const course = await prisma.course.findUnique({
-      where: { id: params.id },
+      where: { id: (await params).id },
       include: {
         college: {
           select: { id: true, name: true, city: true, state: true, type: true, rating: true, nirf: true, placementPct: true, avgPackage: true }

@@ -6,11 +6,11 @@ export const dynamic = "force-dynamic";
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const college = await prisma.college.findUnique({
-      where: { id: params.id },
+      where: { id: (await params).id },
       include: {
         courses: { orderBy: { name: "asc" } },
         reviews: {

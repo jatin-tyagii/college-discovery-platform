@@ -6,7 +6,7 @@ import { handleApiError, validateRequired } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user) {
@@ -20,13 +20,13 @@ export async function POST(req: Request, { params }: { params: { id: string } })
     const userId = (session.user as any).id;
 
     const answer = await prisma.answer.create({
-      data: { content: body.content, userId, questionId: params.id },
+      data: { content: body.content, userId, questionId: (await params).id },
       include: { user: { select: { id: true, name: true } } },
     });
 
     // Update answer count
     await prisma.question.update({
-      where: { id: params.id },
+      where: { id: (await params).id },
       data: { answerCount: { increment: 1 } },
     });
 

@@ -4,10 +4,10 @@ import { handleApiError } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const question = await prisma.question.findUnique({
-      where: { id: params.id },
+      where: { id: (await params).id },
       include: {
         user: { select: { id: true, name: true } },
         answers: {
@@ -23,7 +23,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 
     // Increment views
     await prisma.question.update({
-      where: { id: params.id },
+      where: { id: (await params).id },
       data: { views: { increment: 1 } },
     });
 
@@ -33,11 +33,11 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { solved } = await req.json();
     const question = await prisma.question.update({
-      where: { id: params.id },
+      where: { id: (await params).id },
       data: { solved },
     });
     return NextResponse.json(question);
